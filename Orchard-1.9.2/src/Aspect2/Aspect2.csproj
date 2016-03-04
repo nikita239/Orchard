@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7D07E9B4-C7D8-4F1B-BB79-D556479E5089}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Aspect2</RootNamespace>
+    <AssemblyName>Aspect2</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AspectDotNet">
+      <HintPath>..\..\Weaver\AspectDotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\nhibernate\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\aspnetmvc\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Orchard.Recipes.WriteInJournal.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="F:\DOWNLOADS\Orchard-1.9.2\Orchard-1.9.2\src\Orchard.Web\Core\Orchard.Core.csproj">
+      <Project>{9916839C-39FC-4CEB-A5AF-89CA7E87119F}</Project>
+      <Name>Orchard.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\DOWNLOADS\Orchard-1.9.2\Orchard-1.9.2\src\Orchard.Web\Modules\Orchard.DesignerTools\Orchard.DesignerTools.csproj">
+      <Project>{4A4595EF-6C37-4F99-96ED-4AE0B9E438D3}</Project>
+      <Name>Orchard.DesignerTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\DOWNLOADS\Orchard-1.9.2\Orchard-1.9.2\src\Orchard.Web\Modules\Orchard.ImageEditor\Orchard.ImageEditor.csproj">
+      <Project>{1F0B6B85-8B0B-47CA-899D-F25B4F1B52C3}</Project>
+      <Name>Orchard.ImageEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\DOWNLOADS\Orchard-1.9.2\Orchard-1.9.2\src\Orchard.Web\Modules\Orchard.Lists\Orchard.Lists.csproj">
+      <Project>{137906ea-15fe-4ad8-a6a0-27528f0477d6}</Project>
+      <Name>Orchard.Lists</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\DOWNLOADS\Orchard-1.9.2\Orchard-1.9.2\src\Orchard.Web\Modules\Orchard.MediaLibrary\Orchard.MediaLibrary.csproj">
+      <Project>{73A7688A-5BD3-4F7E-ADFA-CE36C5A10E3B}</Project>
+      <Name>Orchard.MediaLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\DOWNLOADS\Orchard-1.9.2\Orchard-1.9.2\src\Orchard.Web\Modules\Orchard.Recipes\Orchard.Recipes.csproj">
+      <Project>{fc1d74e8-7a4d-48f4-83de-95c6173780c4}</Project>
+      <Name>Orchard.Recipes</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\DOWNLOADS\Orchard-1.9.2\Orchard-1.9.2\src\Orchard\Orchard.Framework.csproj">
+      <Project>{2D1D92BB-4555-4CBE-8D0E-63563D6CE4C6}</Project>
+      <Name>Orchard.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>set TargetAssemblyDir=C:\Orchard-1.9.2\Orchard-1.9.2\src\Orchard.Web\Modules\Orchard.Recipes\bin\
+set TargetAssembly=Orchard.Recipes
+set TargetAssemblyExt=.dll
+set AspectDotNetDir=C:\Weaver
+
+"%25AspectDotNetDir%25\make.bat" "$(TargetPath)" "$(TargetDir)"
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
